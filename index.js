@@ -79,6 +79,10 @@ inputNumber.bind("input", function () {
     } else if (lastc === ".") {
         if (charCount(v, ".") != 1) {
             inputNumber.val(v.slice(0, -1));
+        } else {
+            if (v.length === 1) {
+                inputNumber.val("0.");
+            }
         }
     } else {
         switch (selectedInput) {
