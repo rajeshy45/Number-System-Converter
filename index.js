@@ -15,7 +15,7 @@ function setResult(res, radix) {
     if (!frac) {
         frac = "";
     }
-    
+
     let frac2 = 0.0;
     let p = -1;
     for (let c of frac) {
@@ -59,57 +59,63 @@ radioButtons.each(function () {
     });
 });
 
-inputNumber.on("keypress", function (e) {
-    selectedInput = $('input[name="input-base"]:checked').val();
-    switch (selectedInput) {
-        case "Binary":
-            if (!binaryPattern.test(String.fromCharCode(e.which))) {
-                e.preventDefault();
-            }
-            break;
-        case "Octal":
-            if (!octalPattern.test(String.fromCharCode(e.which))) {
-                e.preventDefault();
-            }
-            break;
-        case "Decimal":
-            if (!decimalPattern.test(String.fromCharCode(e.which))) {
-                e.preventDefault();
-            }
-            break;
-        case "Hexadecimal":
-            if (!hexPattern.test(String.fromCharCode(e.which))) {
-                e.preventDefault();
-            }
-            break;
-        default:
-            break;
+function charCount(str, letter) {
+    let count = 0;
+
+    for (let i = 0; i < str.length; i++) {
+        if (str.charAt(i) == letter) {
+            count += 1;
+        }
     }
-});
+    return count;
+}
 
 inputNumber.bind("input", function () {
-    if (convertDynamically) {
-        selectedInput = $('input[name="input-base"]:checked').val();
-        let v = $(this).val();
-        if (v === "") {
-            setZero();
-        } else {
-            switch (selectedInput) {
-                case "Binary":
+    selectedInput = $('input[name="input-base"]:checked').val();
+    let v = $(this).val();
+    let lastc = v.slice(-1);
+    if (v === "") {
+        setZero();
+    } else if (lastc === ".") {
+        if (charCount(v, ".") != 1) {
+            inputNumber.val(v.slice(0, -1));
+        }
+    } else {
+        switch (selectedInput) {
+            case "Binary":
+                if (!binaryPattern.test(lastc)) {
+                    inputNumber.val(v.slice(0, -1));
+                }
+                if (convertDynamically) {
                     setResult(v, 2);
-                    break;
-                case "Octal":
+                }
+                break;
+            case "Octal":
+                if (!octalPattern.test(lastc)) {
+                    inputNumber.val(v.slice(0, -1));
+                }
+                if (convertDynamically) {
                     setResult(v, 8);
-                    break;
-                case "Decimal":
+                }
+                break;
+            case "Decimal":
+                if (!decimalPattern.test(lastc)) {
+                    inputNumber.val(v.slice(0, -1));
+                }
+                if (convertDynamically) {
                     setResult(v, 10);
-                    break;
-                case "Hexadecimal":
+                }
+                break;
+            case "Hexadecimal":
+                if (!hexPattern.test(lastc)) {
+                    inputNumber.val(v.slice(0, -1));
+                }
+                if (convertDynamically) {
                     setResult(v, 16);
-                    break;
-                default:
-                    break;
-            }
+                }
+                break;
+            default:
+                break;
         }
     }
 });
