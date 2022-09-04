@@ -4,13 +4,29 @@ let selectedInput = $('input[name="input-base"]:checked').val();
 inputNumber.attr("placeholder", selectedInput + " Number");
 let convertDynamically = false;
 
-let binaryPattern = /[01]/;
-let octalPattern = /[01234567]/;
-let decimalPattern = /[0-9]/;
-let hexPattern = /[0-9abcdefABCDEF]/;
+let binaryPattern = /[01.]/;
+let octalPattern = /[01234567.]/;
+let decimalPattern = /[0-9.]/;
+let hexPattern = /[0-9abcdefABCDEF.]/;
 
-function setResult(bin, radix) {
-    let dec = parseInt(bin, radix);
+function setResult(res, radix) {
+    let [dec, frac] = res.split(".");
+
+    if (!frac) {
+        frac = "";
+    }
+    
+    let frac2 = 0.0;
+    let p = -1;
+    for (let c of frac) {
+        let t = parseInt(c, radix);
+        frac2 += t * Math.pow(radix, p);
+        p -= 1;
+    }
+
+    dec = parseInt(dec, radix);
+    dec += frac2;
+
     $("#bin-res").text(dec.toString(2));
     $("#oct-res").text(dec.toString(8));
     $("#dec-res").text(dec.toString(10));
@@ -75,6 +91,33 @@ inputNumber.bind("input", function () {
     if (convertDynamically) {
         selectedInput = $('input[name="input-base"]:checked').val();
         let v = $(this).val();
+        if (v === "") {
+            setZero();
+        } else {
+            switch (selectedInput) {
+                case "Binary":
+                    setResult(v, 2);
+                    break;
+                case "Octal":
+                    setResult(v, 8);
+                    break;
+                case "Decimal":
+                    setResult(v, 10);
+                    break;
+                case "Hexadecimal":
+                    setResult(v, 16);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+});
+
+$(".convert-btn").on("click", function () {
+    if (!convertDynamically) {
+        selectedInput = $('input[name="input-base"]:checked').val();
+        let v = inputNumber.val();
         if (v === "") {
             setZero();
         } else {
