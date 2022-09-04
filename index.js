@@ -74,48 +74,47 @@ inputNumber.bind("input", function () {
     selectedInput = $('input[name="input-base"]:checked').val();
     let v = $(this).val();
     let lastc = v.slice(-1);
+    if (v[0] === ".") {
+        v = "0" + v;
+    }
     if (v === "") {
         setZero();
-    } else if (lastc === ".") {
-        if (charCount(v, ".") != 1) {
-            inputNumber.val(v.slice(0, -1));
-        } else {
-            if (v.length === 1) {
-                inputNumber.val("0.");
-            }
-        }
     } else {
         switch (selectedInput) {
             case "Binary":
                 if (!binaryPattern.test(lastc)) {
                     inputNumber.val(v.slice(0, -1));
-                }
-                if (convertDynamically) {
-                    setResult(v, 2);
+                } else {
+                    if (convertDynamically) {
+                        setResult(v, 2);
+                    }
                 }
                 break;
             case "Octal":
                 if (!octalPattern.test(lastc)) {
                     inputNumber.val(v.slice(0, -1));
-                }
-                if (convertDynamically) {
-                    setResult(v, 8);
+                } else {
+                    if (convertDynamically) {
+                        setResult(v, 8);
+                    }
                 }
                 break;
             case "Decimal":
                 if (!decimalPattern.test(lastc)) {
                     inputNumber.val(v.slice(0, -1));
-                }
-                if (convertDynamically) {
-                    setResult(v, 10);
+                } else {
+                    if (convertDynamically) {
+                        setResult(v, 10);
+                    }
                 }
                 break;
             case "Hexadecimal":
                 if (!hexPattern.test(lastc)) {
                     inputNumber.val(v.slice(0, -1));
-                }
-                if (convertDynamically) {
-                    setResult(v, 16);
+                } else {
+                    if (convertDynamically) {
+                        setResult(v, 16);
+                    }
                 }
                 break;
             default:
@@ -128,6 +127,9 @@ $(".convert-btn").on("click", function () {
     if (!convertDynamically) {
         selectedInput = $('input[name="input-base"]:checked').val();
         let v = inputNumber.val();
+        if (v[0] === ".") {
+            v = "0" + v;
+        }
         if (v === "") {
             setZero();
         } else {
