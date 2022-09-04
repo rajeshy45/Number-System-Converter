@@ -27,6 +27,8 @@
             rel="stylesheet"
         />
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
@@ -34,26 +36,46 @@
         <div class="row text-center radio-group p-3">
             <p>Select base:</p>
             <div class="col-lg-3 col-md-6 col-sm-12">
-                <input type="radio" name="input-base" id="base2" />
+                <input
+                    type="radio"
+                    name="input-base"
+                    id="base2"
+                    value="Binary"
+                />
                 <label for="base2">Binary (base 2)</label>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
-                <input type="radio" name="input-base" id="base8" />
+                <input
+                    type="radio"
+                    name="input-base"
+                    id="base8"
+                    value="Octal"
+                />
                 <label for="base8">Octal (base 8)</label>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
-                <input type="radio" name="input-base" id="base10" />
+                <input
+                    type="radio"
+                    name="input-base"
+                    checked
+                    id="base10"
+                    value="Decimal"
+                />
                 <label for="base10">Decimal (base 10)</label>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12">
-                <input type="radio" name="input-base" id="base16" />
+                <input
+                    type="radio"
+                    name="input-base"
+                    id="base16"
+                    value="Hexadecimal"
+                />
                 <label for="base16">Hexadecimal (base 16)</label>
             </div>
         </div>
         <input
             type="text"
             class="form-control number-input p-3"
-            placeholder="Decimal Number"
         />
         <div class="text-center m-4">
             <input type="checkbox" id="cb" />
@@ -62,13 +84,14 @@
         </div>
         <div class="text-center result-group">
             <p>Binary (base 2):</p>
-            <h1>0000</h1>
+            <h1 id="bin-res">0</h1>
             <p>Octal (base 8):</p>
-            <h1>0000</h1>
+            <h1 id="oct-res">0</h1>
             <p>Decimal (base 10):</p>
-            <h1>0000</h1>
+            <h1 id="dec-res">0</h1>
             <p>Hexadecimal (base 16):</p>
-            <h1>0000</h1>
+            <h1 id="hex-res">0</h1>
         </div>
+        <script src="index.js"></script>
     </body>
 </html>
