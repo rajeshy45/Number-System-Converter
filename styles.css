@@ -1,0 +1,53 @@
+
+body {
+    background-color: #0A0A0B;
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+}
+
+.radio-group {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 0 min(8rem, 10%);
+}
+
+.number-input {
+    width: max(30vw, 300px);
+    margin: 3rem auto 0;
+    border-radius: 50px;
+    border: 1px solid white;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+::placeholder {
+    text-align: center;
+    font-weight: 400;
+}
+
+.convert-btn {
+    background-color: #215BF0;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 50px;
+    padding: 0.5rem 4rem;
+    margin: 0 auto;
+}
+
+.convert-btn:hover {
+    background-color: #215BC0;
+}
+
+.result-group {
+    margin: 3rem 0;
+}
+
+.result-group p {
+    margin: 1rem auto 0;
+}
+
+.result-group h1 {
+    margin: 0;
+}

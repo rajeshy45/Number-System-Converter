@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Number System Converter</title>
+
+        <!-- CSS only -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+            crossorigin="anonymous"
+        />
+        <!-- JavaScript Bundle with Popper -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+            crossorigin="anonymous"
+        ></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <h1 class="text-center fs-1 fw-bold m-5">Number System Converter</h1>
+        <div class="row text-center radio-group p-3">
+            <p>Select base:</p>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <input type="radio" name="input-base" id="base2" />
+                <label for="base2">Binary (base 2)</label>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <input type="radio" name="input-base" id="base8" />
+                <label for="base8">Octal (base 8)</label>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <input type="radio" name="input-base" id="base10" />
+                <label for="base10">Decimal (base 10)</label>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <input type="radio" name="input-base" id="base16" />
+                <label for="base16">Hexadecimal (base 16)</label>
+            </div>
+        </div>
+        <input
+            type="text"
+            class="form-control number-input p-3"
+            placeholder="Decimal Number"
+        />
+        <div class="text-center m-4">
+            <input type="checkbox" id="cb" />
+            <label for="cb">Convert dynamically</label>
+            <button class="convert-btn mx-3 my-2">Convert</button>
+        </div>
+        <div class="text-center result-group">
+            <p>Binary (base 2):</p>
+            <h1>0000</h1>
+            <p>Octal (base 8):</p>
+            <h1>0000</h1>
+            <p>Decimal (base 10):</p>
+            <h1>0000</h1>
+            <p>Hexadecimal (base 16):</p>
+            <h1>0000</h1>
+        </div>
+    </body>
+</html>
